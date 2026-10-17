@@ -1,219 +1,177 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { GraduationCap, Briefcase, Trophy } from "lucide-react";
+import { useState } from "react";
+
+type Entry = {
+  period: string;
+  title: string;
+  place: string;
+  tag: string;
+  description: string;
+};
+
+const education: Entry[] = [
+  {
+    period: "University of Nigeria, Nsukka (2002)",
+    title: "PhD in Social History/Women's History",
+    place: "1989 - 2019",
+    tag: "Hons.",
+    description:
+      "Professor Uchendu completed her doctoral studies with a focus on Social History, specializing in women's experiences, roles, and identities. Her research emphasized the historical evolution of women's contributions and their impact on Nigerian society, reflecting her enduring interest in gender studies and conflict.",
+  },
+  {
+    period: "University of Nigeria, Nsukka (1993)",
+    title: "M.A. in Political History",
+    place: "1989 - 2019",
+    tag: "Hons.",
+    description:
+      "In her master's program, Uchendu studied the dynamics of political history, particularly in Nigeria. Her studies during this time laid the groundwork for her later research on historical movements, political change, and gender in Nigeria.",
+  },
+  {
+    period: "University of Nigeria, Nsukka (1989)",
+    title: "B.A. in History",
+    place: "1989 - 2019",
+    tag: "Hons.",
+    description:
+      "As an undergraduate, Uchendu pursued a comprehensive study of history, gaining foundational knowledge in Nigerian and African historical narratives, which would later serve as the basis for her specialized research on the Nigerian Civil War and Islamic history in Eastern Nigeria.",
+  },
+];
+
+const work: Entry[] = [
+  {
+    period: "Galilee International Management Institute, Nahalal (2019)",
+    title: "Diploma in Management of Higher Education Institutes",
+    place: "2010 - 2022",
+    tag: "Israel",
+    description:
+      "This diploma provided Prof. Uchendu with essential skills in educational management, equipping her to effectively lead academic departments and research centers and contribute to policy formulation in higher education.",
+  },
+  {
+    period: "Loyola University, New Orleans (2001)",
+    title: "Certificate in English for Graduate Studies",
+    place: "2010 - 2022",
+    tag: "USA",
+    description:
+      "This certification facilitated Prof. Uchendu's proficiency in academic English, enabling her to communicate her research effectively within international academic circles.",
+  },
+  {
+    period: "University of Applied Sciences, Osnabrück, Germany, and University of Addis Ababa, Ethiopia (2008)",
+    title: "Certificate in Modern Higher Education Management and Leadership",
+    place: "2010 - 2022",
+    tag: "Germany",
+    description:
+      "Through this course, Prof. Uchendu developed advanced leadership skills tailored to higher education, preparing her for her roles in managing academic programs and faculty development initiatives.",
+  },
+];
+
+const achievements: Entry[] = [
+  {
+    period: "African Studies Association",
+    title: "Editor, History in Africa Journal",
+    place: "2019 - 2025",
+    tag: "Editorship",
+    description:
+      "Editor of History in Africa: A Journal of Debates, Methods, and Source Analysis for the African Studies Association.",
+  },
+  {
+    period: "Presidential Committee, Nigeria",
+    title: "Policy Advisory and Consultancy",
+    place: "Ongoing",
+    tag: "Policy",
+    description:
+      "Served on the Presidential Committee for Nigeria's National Defence Policy and as a consultant to Transparency International on security sector involvement in Nigerian elections.",
+  },
+  {
+    period: "University of Nigeria, Nsukka",
+    title: "Mentorship and Development",
+    place: "Ongoing",
+    tag: "Capacity Building",
+    description:
+      "Established programs like the Building Research Competence Project and the Faculty of Arts Capacity Building Workshop at UNN to develop research skills among students and early-career academics.",
+  },
+];
 
 const tabs = [
-  { id: "education", label: "Education", icon: GraduationCap },
-  { id: "work", label: "Work Experience", icon: Briefcase },
-  { id: "achievements", label: "Achievements", icon: Trophy },
+  { id: "education", label: "Education", data: education },
+  { id: "work", label: "Work Experience", data: work },
+  { id: "achievements", label: "Achievements", data: achievements },
 ];
 
-const education = [
-  {
-    period: "2002",
-    degree: "PhD in Social History / Women's History",
-    institution: "University of Nigeria, Nsukka",
-    honor: "Hons.",
-    description:
-      "Doctoral studies focused on Social History, specializing in women's experiences, roles, and identities. Research emphasized the historical evolution of women's contributions and their impact on Nigerian society.",
-  },
-  {
-    period: "1993",
-    degree: "M.A. in Political History",
-    institution: "University of Nigeria, Nsukka",
-    honor: "Hons.",
-    description:
-      "Studied the dynamics of political history, particularly in Nigeria — laying the groundwork for later research on historical movements, political change, and gender.",
-  },
-  {
-    period: "1989",
-    degree: "B.A. in History",
-    institution: "University of Nigeria, Nsukka",
-    honor: "Hons.",
-    description:
-      "Gained foundational knowledge in Nigerian and African historical narratives, which later served as the basis for specialized research on the Nigerian Civil War and Islamic history in Eastern Nigeria.",
-  },
-];
-
-const work = [
-  {
-    period: "2019",
-    degree: "Diploma in Management of Higher Education Institutes",
-    institution: "Galilee International Management Institute, Nahalal",
-    honor: "Israel",
-    description:
-      "Provided essential skills in educational management, equipping her to effectively lead academic departments and contribute to policy formulation in higher education.",
-  },
-  {
-    period: "2008",
-    degree: "Certificate in Modern Higher Education Management and Leadership",
-    institution: "University of Applied Sciences, Osnabrück & University of Addis Ababa",
-    honor: "Germany / Ethiopia",
-    description:
-      "Developed advanced leadership skills tailored to higher education, preparing her for roles in managing academic programs and faculty development initiatives.",
-  },
-  {
-    period: "2001",
-    degree: "Certificate in English for Graduate Studies",
-    institution: "Loyola University, New Orleans",
-    honor: "USA",
-    description:
-      "Facilitated proficiency in academic English, enabling effective communication of research within international academic circles.",
-  },
-];
-
-const achievements = [
-  {
-    period: "2019–2025",
-    degree: "Editor, History in Africa Journal",
-    institution: "African Studies Association",
-    honor: "Journal Editorship",
-    description:
-      "Served as editor of History in Africa: A Journal of Debates, Methods, and Source Analysis — one of the premier journals in African historical scholarship.",
-  },
-  {
-    period: "Ongoing",
-    degree: "Presidential Committee Member",
-    institution: "Nigeria's National Defence Policy",
-    honor: "Policy Advisory",
-    description:
-      "Served on the Presidential Committee shaping Nigeria's National Defence Policy, contributing scholarly expertise to national security governance.",
-  },
-  {
-    period: "Ongoing",
-    degree: "Consultant, Transparency International",
-    institution: "Security Sector & Electoral Integrity",
-    honor: "Consultancy",
-    description:
-      "Engaged as a consultant on security sector involvement in Nigerian elections, advising on governance, accountability, and democratic processes.",
-  },
-  {
-    period: "2010+",
-    degree: "Building Research Competence Project",
-    institution: "University of Nigeria, Nsukka",
-    honor: "Academic Initiative",
-    description:
-      "Established a flagship mentorship program at UNN to build research capacity among students and early-career academics in the Faculty of Arts.",
-  },
-];
-
-const tabData: Record<string, typeof education> = { education, work, achievements };
-
-function TimelineItem({
-  period, degree, institution, honor, description, index, isLast,
-}: {
-  period: string; degree: string; institution: string; honor: string;
-  description: string; index: number; isLast: boolean;
-}) {
-  const [visible, setVisible] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    setVisible(false);
-    const t = setTimeout(() => {
-      const observer = new IntersectionObserver(
-        ([entry]) => { if (entry.isIntersecting) { setTimeout(() => setVisible(true), index * 120); observer.disconnect(); } },
-        { threshold: 0.1 }
-      );
-      if (ref.current) observer.observe(ref.current);
-      return () => observer.disconnect();
-    }, 60);
-    return () => clearTimeout(t);
-  }, [index, degree]);
-
+function Timeline({ entries }: { entries: Entry[] }) {
   return (
-    <div
-      ref={ref}
-      className={`flex gap-6 transition-all duration-600 ${
-        visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-6"
-      }`}
-      style={{ transitionDuration: "0.6s" }}
-    >
-      {/* Spine */}
-      <div className="flex flex-col items-center flex-shrink-0">
-        <div className="w-4 h-4 rounded-full bg-[#d4a020] border-4 border-[#1a1a1a] shadow-lg shadow-[#d4a020]/30 mt-1.5" />
-        {!isLast && <div className="w-px flex-1 bg-gradient-to-b from-[#d4a020]/60 to-[#2e2e2e] mt-1" />}
-      </div>
-
-      {/* Content */}
-      <div className="pb-10">
-        <span className="inline-block text-[10px] font-bold text-[#d4a020] tracking-widest uppercase bg-[#d4a020]/10 border border-[#d4a020]/20 px-2.5 py-0.5 rounded mb-2">
-          {period}
-        </span>
-        <h3
-          className="text-xl font-bold text-white mt-1 leading-snug"
-          style={{ fontFamily: "var(--font-playfair)" }}
-        >
-          {degree}
-        </h3>
-        <p className="text-[#d4a020] text-sm font-semibold mt-1">{institution}</p>
-        <span className="text-xs text-[#555] font-medium">{honor}</span>
-        <p className="text-[#777] text-sm leading-relaxed mt-3 max-w-xl">{description}</p>
-      </div>
+    <div className="mt-6 lgl:mt-14 w-full border-l-[6px] border-l-[var(--border-color)] border-opacity-30 flex flex-col gap-10">
+      {entries.map((entry) => (
+        <div key={entry.title} className="w-full group flex">
+          <div className="w-10 h-[6px] bgOpacity mt-16 relative">
+            <span className="absolute w-5 h-5 rounded-full -top-2 -left-3 flex justify-center items-center bg-[var(--icon-bg)] bg-opacity-60">
+              <span className="w-3 h-3 rounded-full bg-bodyColor inline-flex group-hover:bg-designColor duration-300" />
+            </span>
+          </div>
+          <div className="w-full bgOpacity hover:bg-[var(--surface-opacity-hover)] duration-300 rounded-lg p-4 lgl:px-10 flex flex-col justify-center gap-6 lgl:gap-10 shadow-shadowOne">
+            <div className="flex flex-col lgl:flex-row justify-between gap-4 lgl:gap-0 lgl:items-center">
+              <div>
+                <h3 className="text-xl md:text-2xl font-semibold text-lightText duration-300">
+                  {entry.title}
+                </h3>
+                <p className="text-sm mt-2 text-[var(--muted-color)] group-hover:text-lightText duration-300">
+                  {entry.period}
+                </p>
+              </div>
+              <div>
+                <p className="px-4 py-2 text-designColor bg-[var(--surface-opacity)] rounded-lg flex justify-center items-center shadow-shadowOne text-sm font-medium">
+                  {entry.tag}
+                </p>
+              </div>
+            </div>
+            <p className="text-sm md:text-base font-medium text-[var(--muted-color)] group-hover:text-[var(--heading-color)] duration-300">
+              {entry.description}
+            </p>
+          </div>
+        </div>
+      ))}
     </div>
   );
 }
 
 export default function Experience() {
-  const [activeTab, setActiveTab] = useState("education");
-  const [headerVisible, setHeaderVisible] = useState(false);
-  const headerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setHeaderVisible(true); observer.disconnect(); } },
-      { threshold: 0.2 }
-    );
-    if (headerRef.current) observer.observe(headerRef.current);
-    return () => observer.disconnect();
-  }, []);
-
-  const items = tabData[activeTab] || [];
+  const [active, setActive] = useState("education");
+  const activeTab = tabs.find((t) => t.id === active) ?? tabs[0];
 
   return (
-    <section id="experience" className="py-24 bg-[#111]">
-      <div className="max-w-6xl mx-auto px-6">
-        {/* Header */}
-        <div
-          ref={headerRef}
-          className={`text-center mb-12 transition-all duration-700 ${
-            headerVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          <p className="text-[#555] text-xs uppercase tracking-[0.3em] mb-3 font-semibold">
-            Over 20 Years of Professional Experience
-          </p>
-          <h2 className="text-3xl md:text-4xl font-bold text-[#d4a020] uppercase tracking-wider">
+    <section id="resume" className="w-full py-20 border-b-[1px] border-b-[var(--border-color)]">
+      <div className="flex justify-center items-center text-center">
+        <div className="flex flex-col gap-4 font-titleFont mb-14">
+          <h3 className="text-sm uppercase font-light text-designColor tracking-wide">
+            OVER 20 YEARS OF PROFESSIONAL EXPERIENCE
+          </h3>
+          <h1 className="text-4xl md:text-5xl text-[var(--heading-color)] font-bold capitalize">
             Experience
-          </h2>
-          <div className="mt-4 w-12 h-0.5 bg-[#d4a020] mx-auto" />
+          </h1>
         </div>
+      </div>
 
-        {/* Tabs */}
-        <div className="flex flex-wrap justify-center gap-3 mb-14">
-          {tabs.map(({ id, label, icon: Icon }) => (
-            <button
-              key={id}
-              onClick={() => setActiveTab(id)}
-              className={`flex items-center gap-2.5 px-6 py-2.5 text-xs font-semibold uppercase tracking-wider transition-all duration-200 ${
-                activeTab === id
-                  ? "bg-[#d4a020] text-[#1a1a1a]"
-                  : "bg-[#222] text-[#777] border border-[#2e2e2e] hover:border-[#d4a020]/40 hover:text-white"
+      <div>
+        <ul className="w-full grid grid-cols-1 md:grid-cols-3">
+          {tabs.map((tab) => (
+            <li
+              key={tab.id}
+              onClick={() => setActive(tab.id)}
+              className={`resumeLi ${
+                active === tab.id ? "border-designColor text-lightText" : "border-transparent"
               }`}
             >
-              <Icon size={14} />
-              {label}
-            </button>
+              {tab.label}
+            </li>
           ))}
-        </div>
+        </ul>
+      </div>
 
-        {/* Timeline */}
-        <div className="max-w-3xl mx-auto">
-          {items.map((item, i) => (
-            <TimelineItem key={`${activeTab}-${i}`} {...item} index={i} isLast={i === items.length - 1} />
-          ))}
+      <div className="w-full" style={{ opacity: 1 }}>
+        <div className="py-6 lgl:py-12 font-titleFont flex flex-col gap-4">
+          <p className="text-sm text-designColor tracking-[4px]">{activeTab.data[0]?.place}</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-lightText">{activeTab.label}</h2>
         </div>
+        <Timeline entries={activeTab.data} />
       </div>
     </section>
   );
