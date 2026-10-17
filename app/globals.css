@@ -2,7 +2,7 @@
 
 
 :root {
-  --shadow-opacity: 0.6;
+  /* --shadow-opacity: 0.6; */
   --surface-from: #000103;
   --surface-to: #202327;
   --surface-hover-from: #000000;
@@ -30,7 +30,7 @@
 }
 
 :root[data-theme="light"] {
-  --shadow-opacity: 0.22;
+  /* --shadow-opacity: 0.22; */
   --color-bodyColor: #f6f4f1;
   --color-lightText: #16181c;
   --surface-from: #ffffff;
@@ -68,7 +68,7 @@
   --font-titleFont: var(--font-montserrat), sans-serif;
   --font-bodyFont: var(--font-poppins), sans-serif;
  
-  --shadow-shadowOne: 20px 20px 50px rgba(0, 0, 0, var(--shadow-opacity)); 
+  --shadow-shadowOne: 20px 20px 50px rgba(0, 0, 0, 0.22) !important; 
 
   --breakpoint-xs: 350px;
   --breakpoint-sml: 570px;

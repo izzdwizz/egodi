@@ -107,7 +107,7 @@ function Timeline({ entries }: { entries: Entry[] }) {
               <span className="w-3 h-3 rounded-full bg-bodyColor inline-flex group-hover:bg-designColor duration-300" />
             </span>
           </div>
-          <div className="w-full bgOpacity hover:bg-[var(--surface-opacity-hover)] duration-300 rounded-lg p-4 lgl:px-10 flex flex-col justify-center gap-6 lgl:gap-10 shadow-shadowOne">
+          <div className="w-full bg-gradient-to-r from-[var(--panel-from)] to-[var(--panel-to)] hover:from-[var(--panel-hover-from)] hover:to-[var(--panel-hover-to)] duration-300 rounded-lg p-4 lgl:px-10 flex flex-col justify-center gap-6 lgl:gap-10 shadow-sm">
             <div className="flex flex-col lgl:flex-row justify-between gap-4 lgl:gap-0 lgl:items-center">
               <div>
                 <h3 className="text-xl md:text-2xl font-semibold text-lightText group-hover:text-[var(--contrast-strong)] duration-300">

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { FaFacebookF, FaWikipediaW, FaLinkedinIn } from "react-icons/fa";
+import { useTheme } from "./useTheme";
 
 const socialLinks = [
   { icon: FaFacebookF, href: "https://www.facebook.com/ProfessorEgodiUchendu/", label: "Facebook" },
@@ -10,6 +11,7 @@ const socialLinks = [
 ];
 
 export default function Contact() {
+  const { theme } = useTheme();
   const [form, setForm] = useState({ name: "", phone: "", email: "", subject: "", message: "" });
   const [sent, setSent] = useState(false);
 
@@ -36,7 +38,7 @@ export default function Contact() {
 
       <div className="w-full">
         <div className="w-full h-auto flex flex-col lgl:flex-row justify-between gap-8 lgl:gap-0">
-          <div className="w-full lgl:w-[35%] h-full bg-gradient-to-r from-[var(--panel-from)] to-[var(--panel-to)] p-4 lgl:p-8 rounded-lg shadow-shadowOne flex flex-col gap-8 justify-center">
+          <div className="w-full lgl:w-[35%] h-full bg-gradient-to-r from-[var(--panel-from)] to-[var(--panel-to)] p-4 lgl:p-8 rounded-lg shadow-md flex flex-col gap-8 justify-center">
             <img
               className="w-full h-64 object-cover rounded-lg mb-2"
               src="https://egodiuchendu.org/static/media/contactImg.8ddfbfd11798f881db54.png"
@@ -62,7 +64,15 @@ export default function Contact() {
               <h2 className="text-base uppercase font-titleFont mb-4">Find me on</h2>
               <div className="flex gap-4">
                 {socialLinks.map(({ icon: Icon, href, label }) => (
-                  <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} className="bannerIcon">
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    className="bannerIcon"
+                    style={{ background: theme === "dark" ? "rgb(20 21 24)" : "#ede8e8ba" }}
+                  >
                     <Icon />
                   </a>
                 ))}
@@ -70,7 +80,7 @@ export default function Contact() {
             </div>
           </div>
 
-          <div className="w-full lgl:w-[60%] h-full py-10 bg-gradient-to-r from-[var(--panel-from)] to-[var(--panel-to)] flex flex-col gap-8 p-4 lgl:p-8 rounded-lg shadow-shadowOne">
+          <div className="w-full lgl:w-[60%] h-full py-10 bg-gradient-to-r from-[var(--panel-from)] to-[var(--panel-to)] flex flex-col gap-8 p-4 lgl:p-8 rounded-lg shadow-md">
             {sent ? (
               <div className="flex-1 flex flex-col items-center justify-center text-center py-16">
                 <h3 className="text-2xl font-bold text-lightText mb-2">Message Sent!</h3>
@@ -140,7 +150,8 @@ export default function Contact() {
                 <div className="w-full">
                   <button
                     type="submit"
-                    className="w-full h-12 bg-[var(--icon-bg)] rounded-lg text-base text-[var(--muted-color)] tracking-wider uppercase hover:text-[var(--contrast-strong)] duration-300 hover:border-[1px] hover:border-designColor border-transparent"
+                    className="w-full h-12 rounded-lg text-base text-[var(--muted-color)] tracking-wider uppercase hover:text-[var(--contrast-strong)] duration-300 hover:border-[1px] hover:border-designColor border-transparent"
+                    style={{ background: theme === "dark" ? "rgb(20 21 24)" : "#ede8e8ba" }}
                   >
                     Send Message
                   </button>

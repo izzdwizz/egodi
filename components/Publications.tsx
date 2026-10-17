@@ -1,6 +1,7 @@
 "use client";
 
 import { FaGlobeAfrica } from "react-icons/fa";
+import { useTheme } from "./useTheme";
 
 const publications = [
   {
@@ -78,6 +79,8 @@ const publications = [
 ];
 
 export default function Publications() {
+
+  const {theme} = useTheme()
   return (
     <section id="projects" className="w-full py-20 border-b-[1px] border-b-[var(--border-color)]">
       <div className="flex justify-center items-center text-center">
@@ -95,7 +98,7 @@ export default function Publications() {
         {publications.map((pub) => (
           <div
             key={pub.title}
-            className="w-full p-4 xl:px-12 h-auto xl:py-10 rounded-lg shadow-shadowOne flex flex-col bg-gradient-to-r from-[var(--surface-from)] to-[var(--surface-to)] group hover:from-[var(--surface-hover-from)] hover:to-[var(--surface-hover-to)] transition-colors duration-1000"
+            className="w-full p-4 xl:px-12 h-auto xl:py-10 rounded-lg shadow-sm flex flex-col bg-gradient-to-r from-[var(--panel-from)] to-[var(--panel-to)] group hover:from-[var(--panel-hover-from)] hover:to-[var(--panel-hover-to)] transition-colors duration-1000"
           >
             <div className="w-full h-[80%] overflow-hidden rounded-lg">
               <img
@@ -115,7 +118,7 @@ export default function Publications() {
                       href={pub.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-lg w-10 h-10 rounded-full bg-[var(--icon-bg)] inline-flex justify-center items-center text-[var(--muted-color)] hover:text-designColor duration-300 cursor-pointer flex-shrink-0"
+                      className={`text-lg w-10 h-10 rounded-sm bg-[${theme === "dark"?'var(--icon-bg)': '#ede8e8de'}] inline-flex justify-center items-center text-[var(--muted-color)] hover:text-designColor duration-300 cursor-pointer flex-shrink-0`}
                     >
                       <FaGlobeAfrica />
                     </a>
