@@ -49,7 +49,8 @@ export default function Navbar() {
         <button
           onClick={toggleTheme}
           aria-label="Toggle theme"
-          className={`text-xl bg-[${theme === "dark"?'':'#f6f4f2'}] w-10 h-10 inline-flex items-center justify-center rounded-full text-designColor cursor-pointer duration-300`}
+          className="text-xl w-10 h-10 inline-flex items-center justify-center rounded-full text-designColor cursor-pointer duration-300"
+          style={{ background: theme === "dark" ? "transparent" : "#f6f4f2" }}
         >
           {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
         </button>

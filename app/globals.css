@@ -19,6 +19,14 @@
   --icon-bg: #000000;
   --card-border-hover: rgba(255, 1, 79, 0.35);
   --scrollbar-track: #111111;
+  --contrast-strong: #ffffff;
+  --tag-bg: rgba(0, 0, 0, 0.25);
+
+  /* Services + Contact panels: flat color in dark mode (no gradient) */
+  --panel-from: #202427;
+  --panel-to: #202427;
+  --panel-hover-from: #1a1d20;
+  --panel-hover-to: #1a1d20;
 }
 
 :root[data-theme="light"] {
@@ -41,11 +49,19 @@
   --icon-bg: #16181c;
   --card-border-hover: rgba(255, 1, 79, 0.3);
   --scrollbar-track: #ececea;
+  --contrast-strong: #16181c;
+  --tag-bg: rgba(0, 0, 0, 0.06);
+
+  /* Services + Contact panels: gradient only applies in light mode */
+  --panel-from: #ffffff;
+  --panel-to: #ececea;
+  --panel-hover-from: #ffffff;
+  --panel-hover-to: #e6e4e0;
 }
 
 
 @theme {
-  --color-bodyColor: #000103;
+  --color-bodyColor: rgb(34 36 40);
   --color-designColor: #ff014f;
   --color-lightText: #e4e4e4;
 
@@ -100,7 +116,7 @@ body {
 
 /* Shared utility classes mirroring the original site's class names */
 .bannerIcon {
-  @apply bg-[var(--icon-bg)] w-10 h-10 rounded-full flex justify-center items-center text-base text-[var(--muted-color)] hover:text-designColor duration-300 cursor-pointer;
+  @apply bg-[var(--icon-bg)] w-10 h-10 rounded-lg flex justify-center items-center text-base text-[var(--muted-color)] hover:text-designColor duration-300 cursor-pointer;
 }
 
 .resumeLi {

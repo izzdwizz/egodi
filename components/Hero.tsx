@@ -2,6 +2,9 @@
 
 import { FaFacebookF, FaWikipediaW, FaLinkedinIn } from "react-icons/fa";
 import { useTheme } from "./useTheme";
+import { useTypewriter } from "./useTypewriter";
+
+const roles = ["Professional Scholar.", "Historian.", "Author.", "Professor."];
 
 const socialLinks = [
   { icon: FaFacebookF, href: "https://www.facebook.com/ProfessorEgodiUchendu/", label: "Facebook" },
@@ -12,6 +15,7 @@ const socialLinks = [
 
 export default function Hero() {
   const { theme } = useTheme();
+  const typedRole = useTypewriter(roles);
 
   return (
     <section
@@ -21,11 +25,11 @@ export default function Hero() {
       <div className="w-full lgl:w-1/2 flex flex-col gap-20">
         <div className="flex flex-col gap-5">
           <h4 className="text-lg font-normal">WELCOME TO MY WORLD</h4>
-          <h1 className="text-5xl font-bold text-lightText">
+          <h1 className="text-5xl font-bold text-[var(--contrast-strong)]">
             Hi, I&apos;m <span className="text-designColor capitalize w-full">Egodi Uchendu</span>
           </h1>
-          <h2 className="text-4xl font-bold text-lightText">
-            a <span>Professional Scholar.</span>
+          <h2 className="text-4xl font-bold text-[var(--contrast-strong)]">
+            a <span>{typedRole}</span>
             <span className="text-designColor cursor-blink">|</span>
           </h2>
           <p className="text-base font-bodyFont leading-8 tracking-wide text-[var(--muted-color)]">

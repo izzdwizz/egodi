@@ -36,14 +36,14 @@ export default function Contact() {
 
       <div className="w-full">
         <div className="w-full h-auto flex flex-col lgl:flex-row justify-between gap-8 lgl:gap-0">
-          <div className="w-full lgl:w-[35%] h-full bg-gradient-to-r from-[var(--surface-from)] to-[var(--surface-to)] p-4 lgl:p-8 rounded-lg shadow-shadowOne flex flex-col gap-8 justify-center">
+          <div className="w-full lgl:w-[35%] h-full bg-gradient-to-r from-[var(--panel-from)] to-[var(--panel-to)] p-4 lgl:p-8 rounded-lg shadow-shadowOne flex flex-col gap-8 justify-center">
             <img
               className="w-full h-64 object-cover rounded-lg mb-2"
               src="https://egodiuchendu.org/static/media/contactImg.8ddfbfd11798f881db54.png"
               alt="contactImg"
             />
             <div className="flex flex-col gap-4">
-              <h3 className="text-3xl font-bold text-lightText">Egodi Uchendu</h3>
+              <h3 className="text-3xl font-bold text-[var(--contrast-strong)]">Egodi Uchendu</h3>
               <p className="text-lg font-normal text-[var(--muted-color)]">Professor</p>
               <p className="text-base text-[var(--muted-color)] tracking-wide">
                 Professor Egodi Uchendu, a distinguished scholar at the University of Nigeria, Nsukka, is
@@ -70,7 +70,7 @@ export default function Contact() {
             </div>
           </div>
 
-          <div className="w-full lgl:w-[60%] h-full py-10 bg-gradient-to-r from-[var(--surface-from)] to-[var(--surface-to)] flex flex-col gap-8 p-4 lgl:p-8 rounded-lg shadow-shadowOne">
+          <div className="w-full lgl:w-[60%] h-full py-10 bg-gradient-to-r from-[var(--panel-from)] to-[var(--panel-to)] flex flex-col gap-8 p-4 lgl:p-8 rounded-lg shadow-shadowOne">
             {sent ? (
               <div className="flex-1 flex flex-col items-center justify-center text-center py-16">
                 <h3 className="text-2xl font-bold text-lightText mb-2">Message Sent!</h3>
@@ -140,7 +140,7 @@ export default function Contact() {
                 <div className="w-full">
                   <button
                     type="submit"
-                    className="w-full h-12 bg-[var(--icon-bg)] rounded-lg text-base text-[var(--muted-color)] tracking-wider uppercase hover:text-lightText duration-300 hover:border-[1px] hover:border-designColor border-transparent"
+                    className="w-full h-12 bg-[var(--icon-bg)] rounded-lg text-base text-[var(--muted-color)] tracking-wider uppercase hover:text-[var(--contrast-strong)] duration-300 hover:border-[1px] hover:border-designColor border-transparent"
                   >
                     Send Message
                   </button>
