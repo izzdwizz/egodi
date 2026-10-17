@@ -1,36 +1,20 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { Menu, X, Mail } from "lucide-react";
+import { useState } from "react";
+import { Menu, Sun, Moon } from "lucide-react";
+import { useTheme } from "./useTheme";
 
 const navLinks = [
   { label: "Home", href: "#home" },
-  { label: "Services", href: "#services" },
-  { label: "Publications", href: "#publications" },
-  { label: "Experience", href: "#experience" },
+  { label: "Services", href: "#features" },
+  { label: "Publications", href: "#projects" },
+  { label: "Experience", href: "#resume" },
   { label: "Contact", href: "#contact" },
 ];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState("home");
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
-      const sections = navLinks.map((l) => l.href.replace("#", ""));
-      for (const id of [...sections].reverse()) {
-        const el = document.getElementById(id);
-        if (el && window.scrollY >= el.offsetTop - 120) {
-          setActiveSection(id);
-          break;
-        }
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const { theme, toggleTheme } = useTheme();
 
   const scrollTo = (href: string) => {
     setIsOpen(false);
@@ -38,87 +22,59 @@ export default function Navbar() {
   };
 
   return (
-    <nav
-      className={`fixed top-3 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-[#1a1a1a]/95 backdrop-blur-md shadow-xl shadow-black/40" : "bg-[#1a1a1a]"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between gap-8">
-        {/* Email */}
-        <a
-          href="mailto:egodi.uchendu@unn.edu.ng"
-          className="hidden sm:flex items-center gap-2 text-[#888] text-xs hover:text-[#d4a020] transition-colors duration-200"
-        >
-          <Mail size={13} />
-          egodi.uchendu@unn.edu.ng
-        </a>
-
-        {/* Nav links – desktop */}
-        <ul className="hidden md:flex items-center gap-7 mx-auto">
-          {navLinks.map((link) => {
-            const active = activeSection === link.href.replace("#", "");
-            return (
-              <li key={link.href}>
-                <button
-                  onClick={() => scrollTo(link.href)}
-                  className={`text-xs font-semibold tracking-widest uppercase transition-all duration-200 relative group ${
-                    active ? "text-[#d4a020]" : "text-[#aaa] hover:text-white"
-                  }`}
-                >
-                  {link.label}
-                  <span
-                    className={`absolute -bottom-0.5 left-0 h-px bg-[#d4a020] transition-all duration-300 ${
-                      active ? "w-full" : "w-0 group-hover:w-full"
-                    }`}
-                  />
-                </button>
-              </li>
-            );
-          })}
-        </ul>
-
-        {/* Logo */}
-        <button
-          onClick={() => scrollTo("#home")}
-          className="text-xl font-bold text-white italic tracking-tight hover:text-[#d4a020] transition-colors duration-200 flex-shrink-0"
-          style={{ fontFamily: "var(--font-playfair)" }}
-        >
-          EU
-        </button>
-
-        {/* Mobile toggle */}
-        <button
-          className="md:hidden text-[#aaa] hover:text-[#d4a020] transition-colors duration-200 -mr-1"
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle menu"
-        >
-          {isOpen ? <X size={22} /> : <Menu size={22} />}
-        </button>
+    <div className="w-full h-24 sticky top-0 z-50 bg-bodyColor mx-auto flex justify-between items-center font-titleFont border-b-[1px] border-b-[var(--border-color)]">
+      <div className="flex gap-3 items-center">
+        <div className="bg-[var(--icon-bg)] rounded-full p-1 border-[5px] border-[var(--surface-to)] flex">
+          <img
+            src="https://egodiuchendu.org/static/media/bannerimg2.3603c641b808513618ad.png"
+            alt="logo"
+            className="h-[55px] w-[55px] relative -bottom-1 rounded-full object-cover"
+          />
+        </div>
+        <p className="font-titleFont font-bold">Egodi Uchendu</p>
       </div>
 
-      {/* Mobile menu */}
-      <div
-        className={`md:hidden overflow-hidden transition-all duration-300 ${
-          isOpen ? "max-h-64 opacity-100" : "max-h-0 opacity-0"
-        }`}
-      >
-        <ul className="px-6 pb-5 pt-2 flex flex-col gap-4 border-t border-[#2e2e2e]">
+      <div className="flex items-center gap-4">
+        <ul className="hidden mdl:inline-flex items-center gap-6 lg:gap-10">
           {navLinks.map((link) => (
-            <li key={link.href}>
-              <button
-                onClick={() => scrollTo(link.href)}
-                className={`text-xs font-semibold tracking-widest uppercase transition-colors duration-200 ${
-                  activeSection === link.href.replace("#", "")
-                    ? "text-[#d4a020]"
-                    : "text-[#aaa] hover:text-white"
-                }`}
-              >
-                {link.label}
-              </button>
+            <li
+              key={link.href}
+              className="text-base font-normal text-[var(--muted-color)] tracking-wide cursor-pointer hover:text-designColor duration-300"
+            >
+              <a onClick={() => scrollTo(link.href)}>{link.label}</a>
             </li>
           ))}
         </ul>
+
+        <button
+          onClick={toggleTheme}
+          aria-label="Toggle theme"
+          className="text-xl w-10 h-10 inline-flex items-center justify-center rounded-full text-designColor cursor-pointer duration-300"
+          style={{ background: theme === "dark" ? "transparent" : "#f6f4f2" }}
+        >
+          {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+        </button>
+
+        <span
+          className="text-xl mdl:hidden bg-[var(--icon-bg)] w-10 h-10 inline-flex items-center justify-center rounded-full text-designColor cursor-pointer"
+          onClick={() => setIsOpen((p) => !p)}
+        >
+          <Menu size={20} />
+        </span>
       </div>
-    </nav>
+
+      {isOpen && (
+        <ul className="mdl:hidden absolute top-24 left-0 w-full bg-bodyColor border-b-[1px] border-b-[var(--border-color)] flex flex-col items-center gap-6 py-8 z-50">
+          {navLinks.map((link) => (
+            <li
+              key={link.href}
+              className="text-base font-normal text-[var(--muted-color)] tracking-wide cursor-pointer hover:text-designColor duration-300"
+            >
+              <a onClick={() => scrollTo(link.href)}>{link.label}</a>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
   );
 }
