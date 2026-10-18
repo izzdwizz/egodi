@@ -98,7 +98,7 @@ export default function Publications() {
         {publications.map((pub) => (
           <div
             key={pub.title}
-            className="w-full p-4 xl:px-12 h-auto xl:py-10 rounded-lg shadow-sm flex flex-col bg-gradient-to-r from-[var(--panel-from)] to-[var(--panel-to)] group hover:from-[var(--panel-hover-from)] hover:to-[var(--panel-hover-to)] transition-colors duration-1000"
+            className="w-full p-4 xl:px-12 h-auto xl:py-10 rounded-lg shadow-2xl flex flex-col bg-gradient-to-r from-[var(--panel-from)] to-[var(--panel-to)] group hover:from-[var(--panel-hover-from)] hover:to-[var(--panel-hover-to)] transition-colors duration-1000"
           >
             <div className="w-full h-[80%] overflow-hidden rounded-lg">
               <img

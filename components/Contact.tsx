@@ -38,7 +38,7 @@ export default function Contact() {
 
       <div className="w-full">
         <div className="w-full h-auto flex flex-col lgl:flex-row justify-between gap-8 lgl:gap-0">
-          <div className="w-full lgl:w-[35%] h-full bg-gradient-to-r from-[var(--panel-from)] to-[var(--panel-to)] p-4 lgl:p-8 rounded-lg shadow-md flex flex-col gap-8 justify-center">
+          <div className="w-full lgl:w-[35%] h-full bg-gradient-to-r from-[var(--panel-from)] to-[var(--panel-to)] p-4 lgl:p-8 rounded-lg shadow-2xl flex flex-col gap-8 justify-center">
             <img
               className="w-full h-64 object-cover rounded-lg mb-2"
               src="https://egodiuchendu.org/static/media/contactImg.8ddfbfd11798f881db54.png"
@@ -80,7 +80,7 @@ export default function Contact() {
             </div>
           </div>
 
-          <div className="w-full lgl:w-[60%] h-full py-10 bg-gradient-to-r from-[var(--panel-from)] to-[var(--panel-to)] flex flex-col gap-8 p-4 lgl:p-8 rounded-lg shadow-md">
+          <div className="w-full lgl:w-[60%] h-full py-10 bg-gradient-to-r from-[var(--panel-from)] to-[var(--panel-to)] flex flex-col gap-8 p-4 lgl:p-8 rounded-lg shadow-2xl">
             {sent ? (
               <div className="flex-1 flex flex-col items-center justify-center text-center py-16">
                 <h3 className="text-2xl font-bold text-lightText mb-2">Message Sent!</h3>
