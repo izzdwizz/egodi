@@ -77,7 +77,7 @@ export default function Services() {
         {services.map(({ title, description, icon }) => (
           <div
             key={title}
-            className="w-full px-12 h-80 py-10 rounded-lg shadow-sm flex items-center bg-gradient-to-r from-[var(--panel-from)] to-[var(--panel-to)] group hover:from-[var(--panel-hover-from)] hover:to-[var(--panel-hover-to)] transition-colors duration-100"
+            className="w-full px-12 h-80 py-10 rounded-lg shadow-xl flex items-center bg-gradient-to-r from-[var(--panel-from)] to-[var(--panel-to)] group hover:from-[var(--panel-hover-from)] hover:to-[var(--panel-hover-to)] transition-colors duration-100"
           >
             <div className="h-72 overflow-y-hidden">
               <div className="flex h-full flex-col gap-10 translate-y-16 group-hover:-translate-y-12 transition-transform duration-500">

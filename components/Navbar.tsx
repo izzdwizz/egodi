@@ -26,7 +26,7 @@ export default function Navbar() {
       <div className="flex gap-3 items-center">
         <div className="bg-[var(--icon-bg)] rounded-full p-1 border-[5px] border-[var(--surface-to)] flex">
           <img
-            src="https://egodiuchendu.org/static/media/bannerimg2.3603c641b808513618ad.png"
+            src="/logo.png"
             alt="logo"
             className="h-[55px] w-[55px] relative -bottom-1 rounded-full object-cover"
           />
