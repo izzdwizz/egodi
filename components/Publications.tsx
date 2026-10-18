@@ -9,7 +9,7 @@ const publications = [
     link: "https://www.researchgate.net/publication/272102474_Women_and_Conflict_in_the_Nigerian_Civil_War",
     description:
       "Examines the roles, experiences, and resilience of Nigerian women during the Nigerian Civil War, highlighting their unique contributions and struggles.",
-    img: "https://egodiuchendu.org/static/media/Women_and_Conflict_cover_2_14_07%20copy_page-0001.28db0f100ba0c6e5ed7b.jpg",
+    img: "/womenxconflict.jpg",
     fit: "cover",
   },
   {
@@ -17,7 +17,7 @@ const publications = [
     link: "https://www.degruyter.com/document/doi/10.1515/olzg-2015-0054/pdf",
     description:
       "Traces the historical spread of Islam in Eastern Nigeria, particularly in Igboland, exploring its cultural and social impact on the region.",
-    img: "https://egodiuchendu.org/static/media/Dawn%20of%20islam.0d3a555fd890cd5a2607.png",
+    img: "/dawnofislam.png",
     fit: "contain",
   },
   {
@@ -25,7 +25,7 @@ const publications = [
     link: "https://www.researchgate.net/publication/344794453_Islam_in_the_Niger_Delta_1890-2017_A_Synthesis_of_the_Accounts_of_Indigenes_and_Migrants",
     description:
       "Provides an in-depth look at the historical evolution of Islam in Nigeria's Niger Delta, detailing perspectives from both indigenous and migrant communities.",
-    img: "https://egodiuchendu.org/static/media/Islam%20in%20the%20Niger%20Delta-cover%20copy.c2f247217e44bfa9e43a.jpg",
+    img: "/islaminthenigerdelta.jpg",
     fit: "contain",
   },
   {
@@ -33,7 +33,7 @@ const publications = [
     link: "https://www.researchgate.net/publication/272100118_Masculinities_in_Contemporary_Africa",
     description:
       "A collection of essays analyzing diverse expressions of masculinity across African societies and their influence on gender relations and societal roles.",
-    img: "https://egodiuchendu.org/static/media/Masculinities%20copy.adfcac7fbcb05536650e.jpeg",
+    img: "/masculinities.jpeg",
     fit: "contain",
   },
   {
@@ -41,7 +41,7 @@ const publications = [
     link: "https://www.researchgate.net/publication/345814605_Nigeria's_Resource_Wars",
     description:
       "Explores the causes, dynamics, and socio-political consequences of resource-based conflicts within Nigeria, aiming to provide pathways to peace and resource equity.",
-    img: "https://egodiuchendu.org/static/media/Nigeria's%20Resource%20Wars%20SS%20(1).b7327ef0f36beb2c5713.png",
+    img: "/nigeriaresourcewars.png",
     fit: "contain",
   },
   {
@@ -49,7 +49,7 @@ const publications = [
     link: "https://rowman.com/ISBN/9781793642066/Negotiating-Patriarchy-and-Gender-in-Africa-Discourses-Practices-and-Policies",
     description:
       "Investigates the ongoing challenges and adaptations surrounding patriarchy and gender roles in African societies through both historical and contemporary lenses.",
-    img: "https://egodiuchendu.org/static/media/UCHENDU%20and%20EDEAGU%20Negotiating%20Patriarchy%20and%20Gender%20in%20Africa_LITHO_Proof1-2_page-0001.94e337ddefceee65c2f4.jpg",
+    img: "/UCHENDU%20and%20EDEAGU%20Negotiating%20Patriarchy%20and%20Gender%20in%20Africa_LITHO_Proof1-2_page-0001.94e337ddefceee65c2f4.jpg",
     fit: "contain",
   },
   {
@@ -57,7 +57,7 @@ const publications = [
     link: "https://www.cambridgescholars.com/product/978-1-5275-9026-7",
     description:
       "Delves into the complex beliefs, societal reactions, and human rights issues associated with witchcraft across African communities.",
-    img: "https://egodiuchendu.org/static/media/Witchcraft%20Cover.3d6c912a3a850a835cdf.png",
+    img: "/witchcraft.png",
     fit: "contain",
   },
   {
@@ -65,7 +65,7 @@ const publications = [
     link: "https://www.elivapress.com/en/book/book-4794938956/",
     description:
       "Chronicles the economic history of Nigeria, examining key developments, challenges, and transformations that have shaped the nation's economy over two centuries.",
-    img: "https://egodiuchendu.org/static/media/Book%20Cover-Economic%20History.2576bb992035057a147c.png",
+    img: "/economicdevelopment.png",
     fit: "contain",
   },
   {
@@ -73,7 +73,7 @@ const publications = [
     link: "https://www.degruyter.com/document/doi/10.1515/9783110766561/html?lang=en",
     description:
       "Nigeria's democracy since independence has faced challenges, with electoral violence by political elites undermining stability and prompting military coups. Nigeria's 2019 Democratic Experience examines these issues in depth.",
-    img: "https://egodiuchendu.org/static/media/cov_9783110766431_Uchendu_RZ_bz_dpm_v2_page-0001.3b854b0e66c6d00ef66f.jpg",
+    img: "/democratic%20experience.jpg",
     fit: "contain",
   },
 ];
@@ -118,7 +118,8 @@ export default function Publications() {
                       href={pub.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`text-lg w-10 h-10 rounded-sm bg-[${theme === "dark"?'var(--icon-bg)': '#ede8e8de'}] inline-flex justify-center items-center text-[var(--muted-color)] hover:text-designColor duration-300 cursor-pointer flex-shrink-0`}
+                      className="text-lg w-10 h-10 rounded-sm inline-flex justify-center items-center text-[var(--muted-color)] hover:text-designColor duration-300 cursor-pointer flex-shrink-0"
+                      style={{ background: theme === "dark" ? "var(--icon-bg)" : "#ede8e8de" }}
                     >
                       <FaGlobeAfrica />
                     </a>

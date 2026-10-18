@@ -41,7 +41,7 @@ export default function Contact() {
           <div className="w-full lgl:w-[35%] h-full bg-gradient-to-r from-[var(--panel-from)] to-[var(--panel-to)] p-4 lgl:p-8 rounded-lg shadow-2xl flex flex-col gap-8 justify-center">
             <img
               className="w-full h-64 object-cover rounded-lg mb-2"
-              src="https://egodiuchendu.org/static/media/contactImg.8ddfbfd11798f881db54.png"
+              src="/contact.png"
               alt="contactImg"
             />
             <div className="flex flex-col gap-4">
